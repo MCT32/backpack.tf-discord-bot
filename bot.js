@@ -10,4 +10,23 @@ client.on('ready', () => {
         console.log(Guilds)
 })
 
+client.on('message', (message) => {
+        if (message.toString().startsWith('?')) {
+                console.log('message received!')
+                var command = message.toString().substring(1)
+                console.log(command)
+
+                if (command in global && typeof global[command] === 'function') {
+                        global[command]();
+                } else {
+                        const embed = new Discord.MessageEmbed()
+                                .setColor('#dc322f')
+                                .setTitle('Command not found')
+                                .setDescription('The command you typed does not exist.')
+
+                        message.channel.send(embed)
+                }
+        }
+})
+
 client.login(token)
