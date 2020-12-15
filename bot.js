@@ -10,6 +10,17 @@ client.on('ready', () => {
         console.log(Guilds)
 })
 
+global.help = function help(message) {
+        const embed = new Discord.MessageEmbed()
+                .setColor('#268bd2')
+                .setTitle('List of commands')
+                .setDescription('Here are all the commands you can use with this bot. (All start with \'?\')')
+                .addField('Commands',
+                "```Help:\tDisplays this help menu.```")
+
+        message.channel.send(embed)
+}
+
 client.on('message', (message) => {
         if (message.toString().startsWith('?')) {
                 console.log('message received!')
@@ -17,7 +28,7 @@ client.on('message', (message) => {
                 console.log(command)
 
                 if (command in global && typeof global[command] === 'function') {
-                        global[command]();
+                        global[command](message);
                 } else {
                         const embed = new Discord.MessageEmbed()
                                 .setColor('#dc322f')
