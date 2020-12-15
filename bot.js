@@ -1,8 +1,13 @@
-var fs = require('fs');
+const Discord = require('discord.js')
+const fs = require('fs')
 
-var token;
+const token = fs.readFileSync('token.txt').toString()
+const client = new Discord.Client()
 
-fs.readFile('token.txt', 'utf8', function(err, data) {
-        if (err) throw err;
-        token = data;
-});
+client.on('ready', () => {
+        const Guilds = client.guilds.cache.map(guild => guild.id)
+        console.log('Servers:')
+        console.log(Guilds)
+})
+
+client.login(token)
