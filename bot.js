@@ -57,7 +57,6 @@ client.on('message', (message) => {
 
                 if (command in global && typeof global[command] === 'function') {
                         var argv = content.split(' ')
-                        var content = [argv]
                         console.log(typeof argv)
                         console.log(typeof argv[0])
                         var argc = argv.length
