@@ -7,6 +7,7 @@ const client = new Discord.Client()
 
 const red = '#dc322f'
 const blue = '#268bd2'
+const cyan = '#2aa198'
 
 function httpGet(url) {
         var req = new XMLHttpRequest()
