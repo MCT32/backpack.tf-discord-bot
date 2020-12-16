@@ -7,6 +7,13 @@ const client = new Discord.Client()
 const red = '#dc322f'
 const blue = '#268bd2'
 
+function httpGet(url) {
+        var req = new XMLHttpRequest()
+        req.open("GET", url, false)
+        req.send(null)
+        return req.response
+}
+
 client.on('ready', () => {
         const Guilds = client.guilds.cache.map(guild => guild.name)
         console.log('Servers:')
