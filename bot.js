@@ -9,11 +9,11 @@ const red = '#dc322f'
 const blue = '#268bd2'
 const cyan = '#2aa198'
 
-function httpGet(url) {
-        var req = new XMLHttpRequest()
-        req.open("GET", url, false)
-        req.send(null)
-        return req.response
+async function httpGetJson(url) {
+        const response = await fetch(url)
+        const json = await response.json()
+
+        return json
 }
 
 client.on('ready', () => {
