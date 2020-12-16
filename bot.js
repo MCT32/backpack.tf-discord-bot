@@ -26,7 +26,6 @@ global.help = function help(message, argc, argv) {
 
 global.test = function test(message, argc, argv) {
         if (argc > 0) {
-                argv.splice(0, 1)
                 const embed = new Discord.MessageEmbed()
                         .setColor(blue)
                         .setTitle('You said')
@@ -57,8 +56,7 @@ client.on('message', (message) => {
 
                 if (command in global && typeof global[command] === 'function') {
                         var argv = content.split(' ')
-                        console.log(typeof argv)
-                        console.log(typeof argv[0])
+                        argv.splice(0, 1)
                         var argc = argv.length
 
                         global[command](message, argc, argv);
