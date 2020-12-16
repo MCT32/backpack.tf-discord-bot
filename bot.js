@@ -1,7 +1,8 @@
 const Discord = require('discord.js')
-const fs = require('fs')
+const fetch = require("node-fetch");
+require('dotenv').config();
 
-const token = fs.readFileSync('token.txt').toString()
+const TOKEN = process.env.TOKEN
 const client = new Discord.Client()
 
 const red = '#dc322f'
@@ -78,4 +79,4 @@ client.on('message', (message) => {
         }
 })
 
-client.login(token)
+client.login(TOKEN)
