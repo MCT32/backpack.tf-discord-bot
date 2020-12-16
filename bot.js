@@ -10,7 +10,7 @@ client.on('ready', () => {
         console.log(Guilds)
 })
 
-global.help = function help(message) {
+global.help = function help(message, argc, argv) {
         const embed = new Discord.MessageEmbed()
                 .setColor('#268bd2')
                 .setTitle('List of commands')
@@ -28,7 +28,10 @@ client.on('message', (message) => {
                 console.log(command)
 
                 if (command in global && typeof global[command] === 'function') {
-                        global[command](message);
+                        var argv = command.split(' ').shift()
+                        var argc = argv.length
+
+                        global[command](message, argc, argv);
                 } else {
                         const embed = new Discord.MessageEmbed()
                                 .setColor('#dc322f')
