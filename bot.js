@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 require('dotenv').config();
 
 const TOKEN = process.env.TOKEN
+const KEY = process.env.API_KEY
 const client = new Discord.Client()
 
 const red = '#dc322f'
