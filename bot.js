@@ -40,7 +40,6 @@ global.test = function test(message, argc, argv) {
                         .setColor(blue)
                         .setTitle('You said')
                         .setDescription(argv)
-                //console.log(argv[0] + '\n' + argv[1])
 
                 message.channel.send(embed)
         } else {
