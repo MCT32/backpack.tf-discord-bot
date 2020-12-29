@@ -29,7 +29,7 @@ global.help = function help(message, argc, argv) {
                 .setTitle('List of commands')
                 .setDescription('Here are all the commands you can use with this bot. (All start with \'?\')')
                 .addField('Commands',
-                "```Help:\tDisplays this help menu.```")
+                "```Help:\tDisplays this help menu.\nCurrency:\tDisplays info about tf2 currencies.```")
 
         message.channel.send(embed)
 }
