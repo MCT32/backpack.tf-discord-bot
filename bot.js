@@ -57,6 +57,44 @@ global.test = function test(message, argc, argv) {
         }
 }
 
+global.currency = async function getcurrency(message, argc, argv) {
+        if (argc = 1) {
+                const data = await httpGetJson('https://backpack.tf/api/IGetCurrencies/v1?key=' + KEY)
+
+                const currency = data['response']['currencies'][argv[0]]
+
+                if (!currency) {
+                        usage()
+                        return 1
+                }
+
+                const name = currency['name']
+                const plural = currency['plural']
+
+                const pricename = currency['price']['currency']
+                const price = currency['price']['value']
+
+                const embed = new Discord.MessageEmbed()
+                        .setColor(cyan)
+                        .setTitle(name)
+                        .setDescription('Stats for ' + plural)
+                        .addField('Price in ' + pricename, price)
+
+                message.channel.send(embed)
+        } else {
+                usage()
+        }
+
+        function usage() {
+                const embed = new Discord.MessageEmbed()
+                        .setColor(red)
+                        .setTitle('Correct syntax')
+                        .setDescription('`?getcurrency <keys, metal, earbuds, hats>`')
+
+                message.channel.send(embed)
+        }
+}
+
 client.on('message', (message) => {
         if (message.toString().startsWith('?')) {
                 console.log('message received!')
